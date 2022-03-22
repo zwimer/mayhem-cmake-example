@@ -9,14 +9,12 @@ RUN apt-get update && \
 ADD . /mayhem-cmake-example
 WORKDIR /mayhem-cmake-example
 
-## Build
-RUN mkdir build
-WORKDIR /mayhem-cmake-example/build
-RUN CC=clang CXX=clang++ cmake .. && make -j$(grep -c ^processor /proc/cpuinfo)
+## TODO: ADD YOUR BUILD INSTRUCTIONS HERE.
+RUN <Your Build Instructions>
 
 # Package Stage
 FROM ubuntu:20.04
 
-## Copy libFuzzer binary into final image.
-COPY --from=builder /mayhem-cmake-example/build/fuzzme /
+## TODO: Change <Path in Builder Stage>
+COPY --from=builder <Path in Builder Stage> /
 
